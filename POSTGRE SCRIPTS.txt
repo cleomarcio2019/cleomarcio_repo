@@ -1,0 +1,528 @@
+CREATE TABLE ALUNO(
+ID SERIAL,
+NOME VARCHAR(255),
+CPF CHAR(11),
+DATA_DE_NASCIMENTO DATE,
+IDADE INTEGER,
+OBSERVACAO TEXT,
+SALARIO NUMERIC(10,2),
+ATIVO BOOLEAN,
+DATA_MATRICULA TIMESTAMP
+);
+
+SELECT * FROM ALUNO
+
+INSERT INTO ALUNO
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO, ATIVO, DATA_MATRICULA)
+VALUES
+('Cleomarcio Celestino', '26000586809','1976-03-25', 44, 
+ 'O estudante é o mais novo desenvoledor junior', 5.500, TRUE, '2021-02-01 12:00:00')
+
+
+
+SELECT  * FROM ALUNO
+ WHERE ID = 2
+ 
+ UPDATE ALUNO
+ SET
+ IDADE = 44
+ WHERE ID = 1
+ 
+ SELECT * FROM ALUNO
+ 
+ SELECT NOME AS "CLIENTE",
+        IDADE AS "FAIXA_ETARIA",
+		SALARIO AS "REMUNERAÇÃO"
+ FROM ALUNO
+
+SELECT NOME AS "NOME DO CLIENTE",
+       IDADE AS "FAIXA ETÁRIA",
+	   SALARIO AS "REMUNERAÇÃO"
+	   FROM aluno
+	   
+SELECT * FROM  aluno
+WHERE NOME <> 'Cleomarcio'
+
+SELECT * FROM aluno
+WHERE NOME NOT LIKE 'Cleomacio'
+
+SELECT * FROM aluno
+WHERE NOME LIKE '%s'
+
+SELECT * FROM aluno
+WHERE ATIVO IS NULL
+
+SELECT * FROM aluno
+WHERE IDADE > 40
+
+SELECT * FROM aluno
+WHERE IDADE BETWEEN 20 AND 50
+
+SELECT * FROM aluno
+WHERE NOME LIKE '%s' AND CPF IS NOT NULL
+
+SELECT * FROM aluno
+WHERE NOME LIKE 'Paulo%' AND NOME LIKE '%Nunes'
+
+INSERT INTO aluno
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO, ATIVO, DATA_MATRICULA)
+VALUES
+('Steve Rogers', '12345678909','1980-01-07', 41, 
+ 'Foi o primeiro vingador', 6.000, TRUE, '2021-03-01 14:00:00')
+ 
+ INSERT INTO aluno
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO, ATIVO, DATA_MATRICULA)
+VALUES
+('Bruce Banner', '12345678910','1990-01-07', 31, 
+ 'É um grande cientista e pesquisador da radiação gama', 4.000, TRUE, 
+ '2021-03-15 14:00:00')
+ 
+ INSERT INTO aluno
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO, ATIVO, DATA_MATRICULA)
+VALUES
+('Clark Joseph Kent', '12345678912','1991-01-07', 30, 
+ 'É um grande cientista e pesquisador da radiação gama', 4.500, TRUE, 
+ '2021-03-25 15:00:00')
+ 
+ INSERT INTO aluno
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO)
+VALUES
+('Johnny Blaze', '12345678913','2006-01-07', 15, 
+ 'É um grande motociclista e detentor de poderes angélicos', 4.000)
+ 
+ INSERT INTO aluno
+(NOME, CPF, DATA_DE_NASCIMENTO, IDADE, OBSERVACAO, SALARIO)
+VALUES
+('Jean Claude Van Danme', '12345678999','2001-01-07', 20, 
+ 'É um grande mestre das artes marciais e ator', 7.000)
+ 
+ CREATE TABLE cursos_profissionalizantes
+ (CODIGO INTEGER NOT NULL UNIQUE,
+  CURSO VARCHAR(100) NOT NULL,
+  DURACAO VARCHAR (50) NOT NULL)
+  
+  INSERT INTO cursos_profissionalizantes
+  (CODIGO, CURSO, DURACAO)
+  VALUES
+  (1, 'Banco de Dados', '2 anos')
+  
+    INSERT INTO cursos_profissionalizantes
+  (CODIGO, CURSO, DURACAO)
+  VALUES
+  (2, 'Lógica de Programação', '2 anos')
+  
+    INSERT INTO cursos_profissionalizantes
+  (CODIGO, CURSO, DURACAO)
+  VALUES
+  (3, 'Pacote Office', '2 anos')
+  
+    INSERT INTO cursos_profissionalizantes
+  (CODIGO, CURSO, DURACAO)
+  VALUES
+  (4, 'Excel Avançado', '1 ano')
+  
+    INSERT INTO cursos_profissionalizantes
+  (CODIGO, CURSO, DURACAO)
+  VALUES
+  (5, 'Desenvolvimento de Sistemas', '4 anos')
+  
+  SELECT * FROM cursos_profissionalizantes
+  
+  SELECT aluno.nome AS "ESTUDANTE",
+         cursos_profissionalizantes.curso AS "NOME DO CURSO"
+		 FROM aluno
+  JOIN cursos_profissionalizantes ON cursos_profissionalizantes.curso = curso
+
+ UPDATE aluno
+  SET NOME = 'Charles Dexter Ward'
+  WHERE NOME = 'Cleomarcio Celestino'
+
+SELECT * FROM funcionarios
+ 
+ SELECT * FROM funcionarios ORDER BY NOME DESC
+ 
+ SELECT * FROM funcionarios ORDER BY NOME LIMIT 5;
+ 
+ SELECT * FROM funcionarios ORDER BY ID LIMIT 5 OFFSET 1;
+ 
+ SELECT COUNT(ID),
+        SUM(ID),
+		MAX(ID),
+		MIN(ID),
+		ROUND(AVG(ID),1) FROM funcionarios
+		
+SELECT * FROM aluno ORDER BY NOME
+
+SELECT DISTINCT * FROM aluno ORDER BY NOME
+
+CREATE DATABASE HARVARD_SCHOOL;
+
+CREATE TABLE tb_estudante
+(id SERIAL PRIMARY KEY,
+ primeiro_nome VARCHAR(200) NOT NULL,
+ sobrenome VARCHAR(200) NOT NULL,
+ data_nascimento DATE NOT NULL);
+ 
+ CREATE TABLE cursos
+ (id SERIAL PRIMARY KEY,
+  nome VARCHAR(200) NOT NULL,
+  categoria_id INTEGER NOT NULL REFERENCES categoria(id))
+  
+  CREATE TABLE categoria
+  (id SERIAL PRIMARY KEY,
+   nome VARCHAR(200) NOT NULL UNIQUE)
+   
+   CREATE TABLE estudante_cursos
+   (estudante_id INTEGER NOT NULL REFERENCES tb_estudante(id),
+    cursos_id INTEGER NOT NULL REFERENCES cursos(id),
+	PRIMARY KEY (estudante_id, cursos_id))
+	
+	INSERT INTO tb_estudante
+	(primeiro_nome, sobrenome, data_nascimento)
+	VALUES 
+	('Vinicius', 'Dias', '1997-10-15'),
+	('Patricia', 'Freitas', '1986-10-25'),
+	('Diogo', 'Oliveira', '1986-08-27'),
+	('Maria', 'Rosa', '1985-01-01'),
+	('Clomarcio', 'Celestino', '1976-03-25');
+	
+	INSERT INTO categoria
+	(nome)
+	VALUES
+	('Front-end'),
+	('Programação'),
+	('Banco de dados'),
+	('Data Science'),
+	('Machine Learning');
+	
+	INSERT INTO cursos 
+	(nome, categoria_id)
+	VALUES
+	('HTML',1),
+	('CSS', 1),
+	('Linguagem R', 5),
+	('PHP', 2),
+	('Java', 2),
+	('C++', 2),
+	('PostgreSQL', 3),
+	('Oracle', 3),
+	('SQL Server', 3),
+	('Power BI', 4),
+	('Python', 2);
+	
+	INSERT INTO estudante_cursos
+	VALUES
+	(1,4), (1,1), (2,1), (2,2), (3,4), (5,5), (5,4), (3,3), (4,4), (4,5), (4, 1);
+
+
+
+SELECT * FROM tb_estudante
+
+SELECT * FROM categoria
+
+SELECT * FROM cursos
+
+SELECT * FROM estudante_cursos
+
+UPDATE categoria SET nome = 'Machine learning' where id = 5
+
+SELECT primeiro_nome, sobrenome, 
+COUNT(cursos.id) AS Qtde_de_cursos
+FROM tb_estudante
+JOIN estudante_cursos ON estudante_cursos.estudante_id = tb_estudante.id
+JOIN cursos ON cursos.id = estudante_cursos.cursos_id
+GROUP BY primeiro_nome, sobrenome
+ORDER BY Qtde_de_cursos DESC
+
+SELECT primeiro_nome, sobrenome, 
+COUNT(estudante_cursos.estudante_id) AS Qtde_de_cursos
+FROM tb_estudante
+JOIN estudante_cursos ON estudante_cursos.estudante_id = tb_estudante.id
+GROUP BY primeiro_nome, sobrenome
+ORDER BY Qtde_de_cursos DESC
+
+SELECT nome AS Curso, 
+COUNT(estudante_cursos.estudante_id) AS Qtde_de_matriculas
+FROM cursos
+JOIN estudante_cursos ON estudante_cursos.estudante_id = cursos.id
+GROUP BY nome
+ORDER BY Qtde_de_matriculas DESC
+
+SELECT nome AS Categoria, 
+COUNT(estudante_cursos.estudante_id) AS Categoria_mais_requisitada
+FROM categoria
+JOIN estudante_cursos ON estudante_cursos.estudante_id = categoria.id
+GROUP BY nome
+ORDER BY Categoria_mais_requisitada DESC
+
+SELECT * FROM cursos WHERE categoria_id IN (1,2)
+
+SELECT * FROM cursos WHERE categoria_id = 1 OR categoria_id = 2
+
+SELECT categoria
+FROM (SELECT nome AS Categoria, 
+      COUNT(estudante_cursos.estudante_id) AS Categoria_mais_requisitada
+      FROM categoria
+      JOIN estudante_cursos ON estudante_cursos.estudante_id = categoria.id
+      GROUP BY nome
+      ORDER BY Categoria_mais_requisitada DESC
+      ) AS categoria_cursos
+	  WHERE Categoria_mais_requisitada > 2;
+
+SELECT nome from categoria WHERE nome NOT LIKE '% %'
+
+SELECT * FROM cursos WHERE categoria_id IN (
+SELECT id from categoria WHERE nome NOT LIKE '% %')
+
+
+
+SELECT UPPER(CONCAT(primeiro_nome, ' ', sobrenome)) from tb_estudante
+
+SELECT (CONCAT(primeiro_nome, ' ', sobrenome)) AS nome_completo,
+(NOW()::DATE - data_nascimento) / 365 AS idade
+from tb_estudante
+
+
+SELECT (CONCAT(primeiro_nome, ' ', sobrenome)) AS nome_completo,
+EXTRACT(YEAR FROM AGE(data_nascimento)) AS idade
+from tb_estudante
+
+
+CREATE FUNCTION IMC (VALOR1 FLOAT, VALOR2 FLOAT) RETURNS TEXT
+AS $$
+DECLARE
+RAZAO FLOAT;
+RESULTADO TEXT;
+BEGIN
+RAZAO = VALOR2 ^ 2.0;
+RESULTADO = VALOR1 / RAZAO;
+RETURN CONCAT('O seu IMC é ', RESULTADO);
+END $$ 
+LANGUAGE PLPGSQL;
+
+SELECT IMC(85.5, 1.65)
+
+DROP FUNCTION IMC
+
+
+CREATE SCHEMA DEMOGRAFIA
+
+CREATE TABLE demografia.cidades
+(codigo SERIAL PRIMARY KEY,
+ nome VARCHAR(50) NOT NULL,
+ uf CHAR(2) NOT NULL,
+ populacao INT NOT NULL);
+
+INSERT INTO demografia.cidades
+(nome, uf, populacao)
+VALUES
+('Passo Fundo', 'RS', 170000)
+INSERT INTO demografia.cidades
+(nome, uf, populacao)
+VALUES
+('Porto Alegre', 'RS', 150000)
+INSERT INTO demografia.cidades
+(nome, uf, populacao)
+VALUES
+('Florianópolis', 'SC', 420000),
+('Curitiba', 'PR', 176500),
+('São Paulo', 'SP', 200000)
+
+
+create table instrutor
+(id serial primary key,
+nome varchar(200) not null,
+salario decimal(10,2))
+
+drop table instrutor
+
+insert into instrutor
+(nome, salario)
+values
+('Vinicius Dias', 1000),
+('Ana Maria', 2000),
+('Nicholas Moreira', 1300),
+('Cleomarcio Celestino', 4500),
+('Isabelli Julie', null)
+
+select * from instrutor
+
+create function instrutor_bem_pago(valor_salario decimal) returns setof instrutor as $$
+select * from instrutor where salario > valor_salario;
+$$ language sql;
+
+create function dobro_do_salario(instrutor) returns decimal as $$
+select $1.salario * 2 as dobro;
+$$ language sql;
+
+create function soma_e_produto(in valor1 integer, in valor2 integer, out soma integer, out produto integer) 
+as $$
+select valor1 + valor2 as soma, valor1 * valor2 as produto;
+$$ language sql;
+
+drop function soma_e_produto
+drop function dobro_do_salario
+
+select * from soma_e_produto(3,3)
+
+select nome, dobro_do_salario(instrutor) from instrutor
+
+select * from instrutor_bem_pago(1500)
+
+
+
+create schema escola
+
+create table escola.estudante
+(nro_aluno integer primary key,
+nome varchar(150) not null)
+
+create table escola.prova
+(nro_prova integer primary key)
+
+
+create table escola.realiza
+(nro_aluno integer primary key,
+nro_prova integer not null unique,
+nota float,
+foreign key (nro_aluno) references escola.estudante(nro_aluno)
+on delete cascade
+on update cascade,
+foreign key (nro_prova) references escola.prova (nro_prova)
+on delete cascade
+on update cascade)
+
+
+insert into escola.prova
+(nro_prova) values (1), (2), (3), (4)
+insert into escola.prova
+(nro_prova) values (3), (4)
+insert into escola.prova
+(nro_prova) values (5), (6), (7), (8)
+
+
+
+select * from escola.estudante
+
+create view media_dos_alunos as (
+select a.nro_aluno, nome, avg(nota) as medias from escola.estudante a, escola.realiza r
+where a.nro_aluno = r.nro_aluno
+group by a.nro_aluno, nome
+order by nome)
+
+select * from media_dos_alunos
+
+select nome, medias, 'Aprovado(a)' as Situacao from
+media_dos_alunos where medias > 7;
+union
+select nome, medias, 'Reprovado(a)' as Situacao from
+media_dos_alunos where medias < 7;
+
+
+
+ create table hospital.consulta
+ (codconslta serial primary key,
+ data date,
+ horario time,
+ medico int references hospital.medico(crm),
+ paciente int references hospital.paciente(codpac) ,
+ convenio int references hospital.convenio(codconv),
+  porcent numeric(5,2))
+
+
+
+
+create table hospital.convenio
+(codconv int primary key,
+nome varchar(200))
+
+
+
+create table hospital.paciente
+(codpac serial primary key,
+nome varchar(200),
+endereco varchar(100),
+telefone char(15),
+idade int,
+nroa int references hospital.ambulatorio(nroa))
+
+
+
+create table hospital.medico
+(crm int primary key,
+nome varchar(200),
+especialidade varchar(200),
+telefone char(15),
+idade int,
+ salario numeric(10,2),
+ nroa int references hospital.ambulatorio)
+
+
+create table hospital.ambulatorio
+(nroa int primary key,
+nome varchar(200),
+numleitos int,
+andar int)
+
+
+create table hospital.atendimento
+ (medico int,
+ convenio int,
+ constraint pk_atende primary key(medico, convenio),
+ constraint medico_consulta foreign key(medico) references hospital.medico(crm),
+ constraint convenio_consuta foreign key(convenio) references hospital.convenio(codconv))
+ 
+ create table hospital.possui
+ (paciente int,
+ convenio int,
+ tipo char(1),
+ vencimento date,
+ constraint pac_possui_conv_pk primary key(paciente, convenio),
+ constraint possui_paciente_fk foreign key(paciente) references hospital.paciente(codpac),
+ constraint possui_convenio_fk foreign key(convenio) references hospital.convenio(codconv))
+
+
+ insert into hospital.ambulatorio
+ (nroa, nome, numleitos, andar)
+ values
+ (1, 'pediátrico', 10, 1),
+ (2, 'geriátrico', 5, 0),
+ (3, 'ortopédico', 15, 0),
+ (4, 'generalidades', 15, 1)
+
+insert into hospital.paciente
+(nome, endereco, telefone, cidade, idade, nroa)
+values
+('João', 'Rua Rego Freitas', '9809-9756', 'Ariquemes', 22, 4),
+('José', 'Rua Engenheiro Rebouças', '3621-8978', 'Porto Velho', 53, 3),
+('Maria', 'Rua Oswaldo Bonanzini', '4567-9872', 'Jaru', 68, 2),
+('Joana', 'Avenida Rebouças', '3343-9889', 'Ariquemes', 34,3),
+('Alfredo', 'Avenida Ipiranga', '8989-0383', 'Ji-Parana', 32,4),
+('Ana Maria', 'Rua Augusta', '9384-8920', 'Jaru', 21,3),
+('Analice', 'Avenida Consolação', '9834-1123', 'Ji-Parana', 12, 1),
+('Caio', 'Avenida Central', '9849-2313', 'Ariquemes', 31, 3),
+('Eduardo', 'Avenida Uberaba', 'null', 'Ariquemes', 11, 1),
+('Lourenço', 'null', '8787-3454', 'Ariquemes', 52, 4),
+('Miqueias', 'Avenida Liberdade', 'null', 'Porto Velho', 42, 4),
+('Fabricio', 'Rua Dr. Soter de Farias', '7679-0927', 'Monte Negro', 51, 3)
+
+
+insert into hospital.medico
+(crm, nome, endereco, telefone, especialidade, idade, salario, nroa, cidade)
+values
+('18739', 'Elias', 'Rua X', '8738-1221', 'Pediatra', 34, 7562.38, 1, 'São Caetano'),
+('76460', 'Ana', 'Avenida Z', '7829-1233', 'Obstreticia', 65, 6452.32, 4, 'Santo André'),
+('39872', 'Pedro', 'Rua W', '9888-2333', 'Oftalmologia', 42, 4239.42, 2, 'São Bernardo'),
+('87568', 'Abdul', 'null', 'null', 'Traumatologia', 37, 12543.12, 3, 'Suzano'),
+('78730', 'Eustaquio', 'null', 'null', 'Pediatra', 43, 4543.43, 1, 'Ribeirão Pires'),
+('89876', 'João Carneiro', 'null', 'null', 'Traumatologia', 53, 12354.43, 3, 'São Paulo'),
+('32029', 'Karla', 'null', 'null', 'Dermatologia', 42, 3284.43, 2, 'Morumbi')
+
+insert into hospital.convenio
+(codconv, nome)
+values
+(189, 'Cassi'),
+(232, 'Unimed'),
+(454, 'Santa Casa'),
+(908, 'Copasa'),
+(435, 'São Lucas')
