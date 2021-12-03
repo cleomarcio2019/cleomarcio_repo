@@ -1,0 +1,96 @@
+//var latitude = 40.87663;
+//var longitude = -8.09373;
+//console.log(latitude);
+//console.log(longitude);
+
+//var nome = "João";  
+//    var sobrenome = 'Gomes';  
+//    var cpf = '111.111.111-11';  
+//    var telefone = "998887655";
+//    var ddd = '21';
+//    var email = 'joao@gmail.com';
+//    var biografia = "João começou a sua carreira como desenvolvedor web em 2010 e já participou de importantes projetos, como...";
+
+//    console.log("Nome Completo: "+nome+" "+sobrenome);
+//    console.log("("+ddd+") - "+telefone);
+//    console.log("Tamanho do telefone: "+telefone.length+" carateres");
+
+//  var num1 = 10;
+//  var num2 = 32;
+//  var soma = num1 + num2;
+//  var subtracao = num1 - num2;
+//  var multiplicacao = num1 * num2;
+//  var divisao = num1 / num2;
+//  alert("Os respectivos resultadois são: "+soma+", "+subtracao+", "+multiplicacao+" e "+divisao);
+
+//document.getElementById("caixa_amarela").innerHTML = '<h1>' + 'Yellow Fucking Box' + '</h1>';
+
+//function soma_numeros(){
+//    var n1 = 20;
+//    var n2 = 25;
+//    var soma = n1 + n2;
+//    console.log(soma);
+//}
+//soma_numeros();
+
+//function valor_imc(peso, altura){
+//    var valor_imc = peso / Math.pow(altura, 2);
+//    var total = valor_imc.toFixed(2);
+//    console.log(total);
+//}
+//valor_imc(86, 1.65);
+
+//var meu_peso = document.getElementById("peso").innerHTML;
+//var minha_altura = document.getElementById("altura").innerHTML;
+//var meu_imc = valor_imc(meu_peso, minha_altura);
+//document.getElementById("imc").innerHTML = meu_imc;
+//console.log(meu_imc);
+
+//var cursos = [
+        {
+    //        'titulo': 'Aprenda programação em Python 3 com facilidade do zero',
+    //        'avaliacoes': 680,
+    //        'alunos': 2300,
+     //       'categorias': ['programacao', 'tecnologia']
+    //    },
+
+    //    {
+    //        'titulo': 'Aprenda PHP e faça sites dinâmicos',
+    //        'avaliacoes': 180,
+    //        'alunos': 350,
+    //        'categorias': ['desenvolvimento web', 'programacao']
+    //    },
+
+    //    {
+    //        'titulo': 'Excel do Zero ao Avançado',
+    //        'avaliacoes': 420,
+    //       'alunos': 1800,
+    //       'categorias': ['produtividade', 'gestão']
+    //    }
+        
+    //];
+    //console.log(cursos);
+    //console.log(cursos[0].categorias[1]);
+    //console.log(cursos[0].categorias[1] = "microsserviços");
+
+
+ //var aluno = {
+ //       'nome': 'Maria',
+ //       'sobrenome': 'Pereira',
+ //       'ano_nasc': 1992,
+ //       'nome_completo': function() {
+//            var nomeCompleto = this.nome + ' ' + this.sobrenome;
+//            return nomeCompleto;
+//        },
+//        'ano_nascimento': function(){
+//            var anoNascimento = this.ano_nasc;
+//            return anoNascimento;
+//        },
+//        'ver_idade': function(){
+//            var idade = 2021 - this.ano_nasc;
+//            return idade;
+//        }
+//    };
+//    aluno.nome_completo();
+//    aluno.ano_nascimento();
+//    aluno.ver_idade();
